@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KS Młyn Kiełbzak - Premiera strony</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+        <img src="logo.png" alt="Logo KS Młyn Kiełbzak" class="logo">
+
+        <h1>KS MŁYN KIEŁBZAK</h1>
+        <p class="status-msg">Nasza nowa strona internetowa jest w przygotowaniu.</p>
+        
+        <div class="launch-info">
+            Widzimy się już <br> <strong>01.06.2026 o godzinie 00:00</strong>
+        </div>
+
+        <div id="countdown" class="countdown">
+            <div class="time-box">
+                <span id="days">00</span>
+                <label>Dni</label>
+            </div>
+            <div class="time-box">
+                <span id="hours">00</span>
+                <label>Godz.</label>
+            </div>
+            <div class="time-box">
+                <span id="minutes">00</span>
+                <label>Min.</label>
+            </div>
+            <div class="time-box">
+                <span id="seconds">00</span>
+                <label>Sek.</label>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Klub Sportowy Młyn Kiełbzak. Wszelkie prawa zastrzeżone.</p>
+    </footer>
+
+    <script>
+        // Data otwarcia: 1 czerwca 2026, 00:00:00
+        const countDownDate = new Date("Jun 1, 2026 00:00:00").getTime();
+
+        const x = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = countDownDate - now;
+
+            // Obliczenia dla dni, godzin, minut i sekund
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Wyświetlanie wyników
+            document.getElementById("days").innerHTML = days;
+            document.getElementById("hours").innerHTML = hours;
+            document.getElementById("minutes").innerHTML = minutes;
+            document.getElementById("seconds").innerHTML = seconds;
+
+            // Jeśli odliczanie się skończy
+            if (distance < 0) {
+                clearInterval(x);
+                document.querySelector(".container").innerHTML = "<h1>STRONA JUŻ DZIAŁA!</h1>";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
